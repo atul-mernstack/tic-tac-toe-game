@@ -10,7 +10,7 @@ export const Quote=()=>{
             try{
                 const res=await axios.get('https://api.adviceslip.com/advice');
                 if(res?.data){
-                    setQuote(res.data.slip.advice);
+                    setQuote(res.data.slip.advice?res.data.slip.advice:'It is better to fail in originality than to succeed in imitation');
                 }
             }catch(err){
                 console.log(err);
@@ -24,8 +24,9 @@ export const Quote=()=>{
 
     return(
         <div className='quote'>
-        <h3>Quote #1</h3>
-        <p>{quote}</p>
+            <div><h3>Quote #1</h3></div>
+            <div><p>{quote}</p></div>  
+            <div className="circle"></div>      
         </div>
     )
 }

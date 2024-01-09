@@ -4,14 +4,29 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 40vh;
+  height: 100vh;
 }
 
 
 .game-container{
-  background-color: darkcyan;
+  /* background-color: darkcyan;
   border-radius: 10px;
   width: 400px;
-  margin-top: 20px;
+  margin-top: 20px; */
+  
+}
+
+.quote-display{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(25, 42, 50, 1);
+  border-radius: 10px;
+  width: 250px;
+  height: 250px;
+  margin-top: -45vh;
+margin-left: 550px;
+
 }
 

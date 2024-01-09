@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Square } from '../Square/Square';
-import {Popup} from '../popup/Popup';
+import { Popup } from '../popup/Popup';
+import { PopupWin } from '../PopupWin/popupWin';
 import './Board.css';
 import { useParams } from 'react-router-dom';
 
-export const Board = () => {
+export const Board = ({handleRefresh,show, setShow}) => {
     const [squares, setSquares] = useState(Array(9).fill(null));
     const [xIsNext, setXIsNext] = useState(true);
-    const [isPopupOpen, setIsPopupOpen] = useState(false);
-    const {turn}=useParams();
-   
+    const[userTurn,setUserTurn]=useState(false);
+    
+    const { turn } = useParams();
+
     const calculateWinner = (squares) => {
         const lines = [
             [0, 1, 2],
@@ -33,6 +35,8 @@ export const Board = () => {
     };
 
     const handleClick = (i) => {
+        setShow(true)
+        setUserTurn(true);
         const newSquares = squares.slice();
         if (calculateWinner(newSquares) || newSquares[i]) {
             return;
@@ -47,31 +51,33 @@ export const Board = () => {
         <Square value={squares[i]} onClick={() => handleClick(i)} />
     );
 
-    const winner = calculateWinner(squares);
-    const status = winner
-        ? `Winner: ${winner}`
-        : `Turn: ${xIsNext ? 'X' : 'O'}`;
 
-        
-    const handleRefresh=()=>{
-        setIsPopupOpen(true);
-    }
 
-    const closePopup = () => {
-        setIsPopupOpen(false);
-      };
+
+     let winner = calculateWinner(squares);
+     const status = winner
+         ? `Winner: ${winner}`
+         : `Turn: ${xIsNext ? 'X' : 'O'}`;
+
+    
+
+
+        const closePopup = () => {          
+            winner=null;          
+          };
+    
 
     return (
-        <div>
-            {isPopupOpen && <Popup onClose={closePopup} />}
+        <div className='board'>
+            {winner && <PopupWin closePopup={closePopup} setShow={setShow}/>}
             <div className='board-row'>
-            <div className='player'>XO</div>
-            <div className="status">{status}</div>
-            <div className='refresh'>
-                <button onClick={handleRefresh}>rf</button>
-                
-                </div>
-        </div>
+                <div className='player-xo'><span className='x'>X</span><span className='o'>O</span></div>
+                <div className="status">{userTurn?status:turn}</div>
+                {show?<div className='refresh'>
+                    <button onClick={handleRefresh}><i style={{ fontSize: "24px", color: 'grey', border: 'none' }} class="fa">&#xf021;</i></button>
+
+                </div>:''}
+            </div>
 
             <div className='board-row'>
                 {renderSquare(0)}
@@ -88,11 +94,11 @@ export const Board = () => {
                 {renderSquare(7)}
                 {renderSquare(8)}
             </div>
-            <div className='results'>
-            <div className='resultx'>You</div>
-            <div className='resultt'>Tie</div>
-            <div className='resulto'>Cpu</div>
-            </div>
+            {show?<div className='results'>
+                <div className='resultx'>X(You)<br />0</div>
+                <div className='resultt'>Tie<br />0</div>
+                <div className='resulto'>O(Cpu)<br />0</div>
+            </div>:''}
         </div>
 
     )

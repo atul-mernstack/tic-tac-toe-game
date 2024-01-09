@@ -1,26 +1,31 @@
-import React from 'reatc';
-import { useNavigate } from 'react-router-dom';
-import './popup.css';
+import React from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import './popupWin.css';
 
-export const PopupWin=()=>{
+export const PopupWin=({closePopup,setShow})=>{
     const navigate=useNavigate();
+    const {turn}=useParams();
     const handleQuit=()=>{
-        navigate('/game');
+        closePopup();        
+        setShow(false);
+        navigate(`/game/${turn}`);
     }
     const handleNextRound=()=>{
-        navigate('/game');
+        setShow(true);      
+        closePopup();
+        navigate(`/game/${turn}`);
     }
     return(
-       <div className='popup'>
-        <div>
+       <div className='popupwin'>
+        {/* <div className='won'> */}
             <h3>YOU WON</h3>
+        {/* </div> */}
+        <div className='takes-the-round'>
+            <h2>O TAKES THE ROUND</h2>
         </div>
-        <div>
-            <h2>TAKES THE ROUND</h2>
-        </div>
-        <div>
-            <div><button onClick={handleQuit}>QUIT</button></div>            
-            <div><button onClick={handleNextRound}>NEXT ROUND</button></div>
+        <div className='quit-n-next-btn'>
+            <div ><button className='quit-t' onClick={()=>handleQuit()}>QUIT</button></div>            
+            <div ><button className='next-round' onClick={handleNextRound}>NEXT ROUND</button></div>
         </div>
        </div>
     )

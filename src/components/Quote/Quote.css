@@ -1,0 +1,29 @@
+.quote{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.quote div h3{
+    position: absolute;
+    margin-left: -45px;
+    top: 10px;
+    color: rgba(49, 196, 190, 1);
+}
+
+.quote div p{
+color: yellowgreen;
+text-align: center !important;
+padding-left: 20px;
+padding-right: 20px;
+}
+
+.circle{
+    position: absolute;
+    bottom: 10px;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(49, 196, 190, 1);
+    border-radius: 50%;
+}

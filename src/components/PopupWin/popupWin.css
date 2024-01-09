@@ -1,0 +1,41 @@
+.popupwin{
+    position: absolute;
+    background-color: rgb(37, 71, 87);
+    width: 399px;
+    height: 180px;
+    margin-top: 100px;
+    margin-left: -57px;
+}
+
+.popupwin h3{
+    /* padding-top: 15px; */
+    color: wheat;
+    font-size: large;
+}
+
+.takes-the-round{
+    color:rgba(242, 178, 55, 1); 
+}
+
+.quit-n-next-btn{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+   
+}
+.quit-t{
+    background-color: rgba(242, 178, 55, 1); 
+    width: 120px;
+    height: 40px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.next-round{
+    background-color: rgba(49, 196, 190, 1);
+    width: 120px;
+    height: 40px;
+    border-radius: 10px;
+    margin: 10px;
+}

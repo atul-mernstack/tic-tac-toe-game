@@ -1,7 +1,16 @@
 .game {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    /* justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100vh; */
+    justify-content: center;
+    align-items: center; 
+    background-color: rgba(25, 42, 50, 1);
+    border-radius: 20px;
+    /* padding-top: 150px;
+    padding-bottom: 150px; */
+    width: 400px;
+    height: 600px;
+    
   }

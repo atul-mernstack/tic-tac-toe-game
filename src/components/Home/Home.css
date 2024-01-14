@@ -46,7 +46,7 @@ div .ox{
     margin-right: 7px;
     font-weight: 900;
     background-color: rgba(25, 42, 50, 1);
-    color: white;
+    color: black;
 }
 
 .pick-player .o{
@@ -55,7 +55,7 @@ div .ox{
     border-radius: 5px;
     margin-left: 7px;
     font-weight: 900;
-    /* background-color: rgba(25, 42, 50, 1); */
+    background-color: rgba(25, 42, 50, 1);
     color: black;
 }
 

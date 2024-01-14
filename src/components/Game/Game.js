@@ -5,19 +5,21 @@ import { Popup } from '../popup/Popup';
 export const Game=()=>{
 const [isPopupOpen, setIsPopupOpen] = useState(false);
 const [show,setShow]=useState(false);
-const handleRefresh = () => {
-  //setOpa(true);
+const [reset,setReset]=useState(false);
+const handleRefresh = () => {  
   setIsPopupOpen(true);
+  setReset(false)
 }
 
 const closePopup = () => {
   setIsPopupOpen(false);
+  setReset(true)
 };
     return(
         <div className="game">
          {isPopupOpen && <Popup onClose={closePopup} setShow={setShow} />}
         <div className="game-board" style={{}}>
-          <Board handleRefresh={handleRefresh} show={show} setShow={setShow}/>
+          <Board handleRefresh={handleRefresh} show={show} setShow={setShow} reset={reset}/>
         </div>
       </div>
     )

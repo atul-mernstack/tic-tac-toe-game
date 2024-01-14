@@ -14,6 +14,9 @@ export const Popup=({ onClose,setShow })=>{
         setShow(false);
         navigate(`/game/${turn}`);
         onClose();
+        localStorage.setItem('X',0);
+        localStorage.setItem('T',0);
+        localStorage.setItem('O',0);
     }
 
     return(

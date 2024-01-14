@@ -9,6 +9,9 @@ export const PopupWin=({closePopup,setShow})=>{
         closePopup();        
         setShow(false);
         navigate(`/game/${turn}`);
+        localStorage.setItem('X',0);
+        localStorage.setItem('T',0);
+        localStorage.setItem('O',0);
     }
     const handleNextRound=()=>{
         setShow(true);      

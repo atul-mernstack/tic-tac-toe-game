@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import './Home.css';
 
 export default function Home() {
-    const [turn, setTurn] = useState();
+    const [turn, setTurn] = useState({});
     const navigate = useNavigate();
     const handleNewGameVsCpu = () => {
         if (turn === 'X' || turn === 'O')
@@ -15,8 +15,9 @@ export default function Home() {
             toast("First pick the player", 'error');
     }
 
-    const handleX = (e) => {
-        setTurn(e.target.innerText);
+    const handleClick = (value) => { 
+        setTurn(value)
+        console.log(turn)
     }
 
     const handleO = (e) => {
@@ -34,8 +35,8 @@ export default function Home() {
                 <div className='player'>
                     <div><h2>PICK PLAYER</h2></div>                    
                     <div class="pick-player">
-                        <button onClick={handleX} className='x'>X</button>
-                        <button onClick={handleO} className='o'>O</button>
+                        <button onClick={()=>handleClick("X")} className='x' style={{backgroundColor:`${turn==='X'?'white':''}`}}>X</button>
+                        <button onClick={()=>handleClick("O")} className='o' style={{backgroundColor:`${turn==='O'?'white':''}`}}>O</button>
                     </div>
                 </div>
                 <div>

@@ -15,9 +15,9 @@ function App() {
           <Route path='/game' element={<Game />} />
         </Routes>
       </div>
-      {/* <div className='quote-display'>
+      <div className='quote-display'>
       <Quote/>
-      </div> */}
+      </div>
      
     </BrowserRouter>
 

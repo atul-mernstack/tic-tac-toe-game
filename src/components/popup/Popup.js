@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import './popup.css';
+import './Popup.css';
 export const Popup=({ onClose,setShow })=>{
     const navigate=useNavigate();
     const {turn} =useParams();

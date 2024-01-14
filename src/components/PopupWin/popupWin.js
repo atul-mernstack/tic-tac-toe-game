@@ -24,7 +24,7 @@ export const PopupWin=({closePopup,setShow})=>{
             <h3>YOU WON</h3>
         {/* </div> */}
         <div className='takes-the-round'>
-            <h2>O TAKES THE ROUND</h2>
+            <h2>{turn} TAKES THE ROUND</h2>
         </div>
         <div className='quit-n-next-btn'>
             <div ><button className='quit-t' onClick={()=>handleQuit()}>QUIT</button></div>            

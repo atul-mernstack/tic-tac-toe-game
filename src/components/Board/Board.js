@@ -11,23 +11,22 @@ export const Board = ({ handleRefresh, show, setShow, reset }) => {
     const [userTurn, setUserTurn] = useState(false);
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     const [win, setWin] = useState();
-    const [xTurn, setXTurn] = useState()
-    const [oTurn, setOTurn] = useState()
+    const [uTurn, setUTurn] = useState()
+    const [cTurn, setCTurn] = useState()
     const [status, setStatus] = useState();
     const { turn } = useParams();
-    const [stepNumber, setStepNumber] = useState(0);
+    
     const initial = () => {
         if (turn === 'X') {
-            setXTurn(turn)
-            setOTurn('O');
+            setUTurn(turn)
+            setCTurn('O');
             setStatus('X');
-        } else {
-            setXTurn('X')
-            setOTurn(turn);
+        } else if(turn==='O') {
+            setUTurn(turn)
+            setCTurn('X');
             setStatus('O');
         }
 
-        alert(xTurn, oTurn, status)
     }
 
     useEffect(() => {
@@ -71,8 +70,9 @@ export const Board = ({ handleRefresh, show, setShow, reset }) => {
             return;
         }
 
-        //newSquares[i] = xIsNext ? 'X' : 'O';
-        newSquares[i] = xIsNext ? xTurn : oTurn;
+        
+        //newSquares[i] = xIsNext ? xTurn : oTurn;
+        newSquares[i] = uTurn;
         setSquares(newSquares);
         setXIsNext(!xIsNext);
     };
@@ -85,6 +85,7 @@ export const Board = ({ handleRefresh, show, setShow, reset }) => {
 
 
     let winner = calculateWinner(squares);
+
     useEffect(() => {
         if (winner) {
             if (winner === 'X') {
@@ -101,14 +102,10 @@ export const Board = ({ handleRefresh, show, setShow, reset }) => {
             setWin(winner);
         }
     }, [winner]);
-    //  const status = winner
-    //      ? `Winner: ${winner}`
-    //      : xIsNext ? xTurn : oTurn;
-
-    //const status = xIsNext ? xTurn : oTurn;
-
+ 
     useEffect(() => {
-        setStatus(xIsNext ? xTurn : oTurn);
+        setStatus(xIsNext ? uTurn : cTurn);
+
     }, [xIsNext])
 
 
@@ -128,33 +125,27 @@ export const Board = ({ handleRefresh, show, setShow, reset }) => {
 
 
     useEffect(() => {
-    //     if (!xIsNext) {          
-    //       const timeoutId = setTimeout(() => {
-    //         const emptySquares = squares.reduce((acc, value, index) => {
-    //           if (value === null) {
-    //             acc.push(index);
-    //           }
-    //           return acc;
-    //         }, []);
+         if (!xIsNext) {          
+           const timeoutId = setTimeout(() => {
+             const emptySquares = squares.reduce((acc, value, index) => {
+               if (value === null) {
+                 acc.push(index);
+               }
+               return acc;
+             }, []);
     
-    //         const randomIndex = Math.floor(Math.random() * emptySquares.length);
-    //         const computerMove = emptySquares[randomIndex];
-    // console.log(emptySquares)
-    // alert("ooooooooo")
-    //         const newHistory = squares.slice(0, stepNumber + 1);
-    //         const newSquare = squares.slice();
-    //         newSquare[computerMove] = 'O';
-    // console.log(newSquare)
-    //         setSquares([...newHistory, newSquare]);
-    //         //setSquares([newSquare]);
-    //         setStepNumber(newHistory.length);
-    //         setXIsNext(!xIsNext);
-    //         console.log(squares)
-    //       }, 500); // Delay of 500 milliseconds for a more natural feel
+             const randomIndex = Math.floor(Math.random() * emptySquares.length);
+             const computerMove = emptySquares[randomIndex];
+
+             squares[computerMove] = cTurn;;
+           
+             setXIsNext(!xIsNext);
+          
+           }, 1000);
     
-    //       return () => clearTimeout(timeoutId);
-    //     }
-      }, [xIsNext, squares, xIsNext]);
+          return () => clearTimeout(timeoutId);
+        }
+      }, [xIsNext, squares]);
 
     return (
         <div className='board'>

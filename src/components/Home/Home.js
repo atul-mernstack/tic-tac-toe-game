@@ -17,14 +17,11 @@ export default function Home() {
 
     const handleClick = (value) => { 
         setTurn(value)
-        console.log(turn)
+       
     }
 
-    const handleO = (e) => {
-        setTurn(e.target.innerText);
-    }
     const handleInvite = () => {
-        toast("Wow so easy!");
+        toast("Share with friends!");
     }
 
     

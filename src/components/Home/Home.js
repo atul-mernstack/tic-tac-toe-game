@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 import { Quote } from '../Quote/Quote';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -21,7 +21,7 @@ export default function Home() {
     }
 
     const handleInvite = () => {
-        toast("Share with friends!");
+        toast(<Link to="https://tic-tac-toe-game-five-drab.vercel.app/">Share with friends!</Link>);
     }
 
     

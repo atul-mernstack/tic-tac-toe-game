@@ -152,7 +152,7 @@ export const Board = ({ handleRefresh, show, setShow, reset }) => {
             {isPopupOpen && <PopupWin closePopup={closePopup} setShow={setShow} />}
             <div className='board-row'>
                 <div className='player-xo'><span className='x'>X</span><span className='o'>O</span></div>
-                <div className="status">{userTurn ? status : turn}</div>
+                <div className="status">{userTurn ? status : turn} : Turn</div>
                 {show ? <div className='refresh'>
                     <button onClick={handleRefresh}><i style={{ fontSize: "24px", color: 'grey', border: 'none' }} class="fa">&#xf021;</i></button>
 

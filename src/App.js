@@ -7,6 +7,7 @@ import './App.css';
 function App() {
   return (
     <BrowserRouter>
+    <div className='game-container'> 
       <div className="App ">
         <Routes>
           <Route path='/' element={<Home />} />
@@ -18,7 +19,7 @@ function App() {
       <div className='quote-display'>
       <Quote/>
       </div>
-     
+       </div>  
     </BrowserRouter>
 
   );
